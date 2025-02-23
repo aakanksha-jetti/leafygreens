@@ -1,0 +1,233 @@
+ 
+ body{
+    background-color:#c6f590;
+ }
+ .navbar {
+  height:10%;
+  background-image: radial-gradient(rgb(151, 242, 14), white); 
+  position: fixed; 
+  top: 0; 
+  left: 0; /* Position it at the left of the viewport (full width) */
+  width: 100%; /* Span the entire width */
+  display: flex; /* Enable flexbox for layout */
+  align-items: center; /* Vertically align content */
+  padding: 10px 20px; /* Add some padding */
+
+}
+
+.leafy-veggies-icon,
+.leafy-veggies-title {
+  margin-left: 30px;
+  font-size: 1cm;
+  font-style: italic;
+  font-family:"Beau Rivage", cursive;
+  font-weight: bold;
+  color: rgb(47, 93, 2); /* Add spacing between elements */
+}
+
+.button-container {
+  flex: 1; /* Allow buttons to grow and fill remaining space */
+  display: flex; /* Make the container a flexbox element */
+  justify-content: flex-end; /* Align buttons to the right within container */
+}
+.login-btn,
+.help-btn
+ {
+  color:rgb(43, 118, 26);
+  font-size: 0.8cm;
+  margin-right: 50px; 
+  
+}
+.logout-btn,
+.log {
+  color:rgb(43, 118, 26);
+  font-size: 0.8cm;
+  margin-right: 50px; 
+  margin-top: 30px;
+}
+.flex-container{
+  margin-top: 5%;
+  height: auto;
+  display: flex;
+  flex-direction: row;/* Allow items to wrap if container width is limited */
+  flex-wrap: wrap;
+  gap: 10px; /* Gap between flex items */
+  padding: 10px; /* Padding for inner content */
+  background-color:#1ee121; /* Optional background color for container */
+}
+/*.flex-container2{
+  margin-top: 5%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px; 
+  padding: 10px; 
+  background-color:#0f5e10; 
+}*/
+.flex-item {
+  /*display: flex;*/
+  flex-direction:column;
+  align-items: center;
+  border: 1px solid #eb0f0f;
+  background-image: linear-gradient(to top,white,green);
+  padding: 10px;
+  margin: 10px;
+  width: 350px; /* Adjust width as needed */
+}
+
+.flex-item img {
+  width: 250px;
+  height: 100%; /* Adjust height as needed */
+  object-fit: cover;
+}
+.price,
+.stock {
+  font-weight: bold;
+  margin-top: 5px;
+  
+}
+.description {
+  margin-top: 10px;
+  height:60%;
+  
+}
+.icon{
+  width: 70px; /* Adjust width as needed */
+  height: 70px; /* Adjust height as needed */
+  border-radius: 80%;
+  overflow: hidden;
+}
+
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fills the container */
+}
+
+h1{
+  font-size: 1cm;
+  font-family: cursive;
+  font-weight: bold;
+  color: green;
+}
+.form-body{
+  height: 10vh;
+}
+form {
+  border: 3px solid #0cea7f;
+  margin: 30%;
+  margin-top: 10%;
+}
+
+.login{
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+/* Full-width inputs */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+
+/* Add a hover effect for buttons */
+
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+
+
+#total-cost {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#purchase-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#purchase-button:hover {
+  background-color: #0069d9;
+}
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+.styled-table td { /* This line can be simplified */
+  border: 1px solid #325f42;
+  padding: 8px;
+  text-align: left;
+}
+.styled-table th{ /* This line can be simplified */
+  color: #0f0e0e;
+  border: 1px solid #325f42;
+  padding: 8px;
+  text-align: left;
+}
+
+.image-container1{
+  width: 100%; /* Or specific width */
+  height: 300px; /* Or specific height */
+  overflow: hidden; 
+}
+.image-container1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Or contain, fill, etc. */
+}

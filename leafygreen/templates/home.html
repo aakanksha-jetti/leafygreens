@@ -1,0 +1,82 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leafygreens</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body><div style="height: 10%";>
+    <nav class="navbar">
+      <div class="icon">
+        <img src="/static/images/icon.jpg",alt="logo">
+      </div>
+        <i class="leafy-veggies-icon"></i>
+        <span class="leafy-veggies-title">Leafy Vegetables</span>
+        <div class="button-container">
+          {%if request.user.is_authenticated %}
+          <h3 class="logout-btn">Hello,{{user.username}}</h3>
+          <a href="accounts/logout"><button class="logout-btn" >Logout</button></a>
+          <a href="accounts/cart"><button class="log">Your Cart</button></a>
+          {%else%}
+          <a href="accounts/login"><button class="login-btn">Login</button></a>
+          <a href="accounts/register"><button class="help-btn">register</button></a>
+          {%endif%}
+        </div>
+      </nav>
+      <div style="margin-top: 7%;">
+        <h1>Unleash the Power of Greens!</h1>
+        <h2 style="color: rgb(18, 157, 3);">&nbsp;&nbsp;&nbsp;Fuel your body with the goodness of nature's most nutrient-packed vegetables.</h2>
+        <h2 style="color: green;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shop Fresh Leafy Greens Now</h2>
+      </div>
+      {%if request.user.is_authenticated %}
+      
+        <audio id="welcomeAudio" autoplay>  <source src="{% static 'images/welcome.mp3' %}" type="audio/mpeg">
+          <source src="{% static 'images/welcome.ogg' %}" type="audio/ogg">  Your browser does not support the audio element.
+      </audio>
+        <div class="flex-container">
+          {% for item in items %}
+          <div class="flex-item">
+            <div>
+              <img class="flex-item img"src="{{item.img.url}}" alt="Product Image">
+              <p>Item ID: {{ item.id }}</p>
+              <h3>Name : {{item.name}}</h3>
+              <p class="price"><h3>Price:</h3>{{item.price}}</p>
+              <p class="description"><h3>Description:</h3>description:{{item.desc}}</p>
+              <p class="stock"><h3>Stock:</h3>{{item.stock}}</p>
+              {% csrf_token %}
+              <button class="add-to-cart-button" data-veggie-id="{{ item.id }}"><h3>Add to Cart</h3></button>
+            </div>
+          </div>
+          {%endfor%}
+          {% else %}
+          <div class="background-image" style="width: 50%; height: 400px; background-image: url('static/images/icon.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+          </div>
+          {%endif%}
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  {# Include jQuery #}
+<script>
+    $('.add-to-cart-button').click(function(e) {
+        e.preventDefault();
+        let veggieId = $(this).data('veggie-id');
+
+        $.ajax({
+            type: 'POST',
+            url: `/add_to_cart/${veggieId}/`,
+            data: {
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                alert(response.message); // Or update cart count dynamically
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+</script>
+        </div>
+      </div>
+</body>
+</html>

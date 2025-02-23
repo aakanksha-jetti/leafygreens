@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Registration</title>
+</head>
+<body>
+    
+{% if cart_items %}
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in cart_items %}
+    <tr>
+      <td>{{ item.product.name }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.product.price }}</td>
+      <td>{{ item.product.price|add:0 }} * {{ item.quantity|add:0 }}</td>
+      <td>
+        <form method="post" action="{% url 'remove_from_cart' item.product.id %}">
+            {% csrf_token %}
+            <button type="submit">Remove</button>
+        </form>
+    </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<p>Total: {{ total }}</p>
+{% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    <a href="checkout"><button id="purchase-button">Purchase</button></a>
+{% else %}
+<p><h1>Your cart is empty.</h1></p>
+{% endif %}
+
+</body>
+</html>
+
+
